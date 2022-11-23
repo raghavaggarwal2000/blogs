@@ -16,25 +16,31 @@ mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology:true})
 })
 .catch((err)=> console.log("Error at connecting to DB" + err));
 
+
+
 // this is used to register for view engine
 app.set('view engine', 'ejs'); 
 app.use(express.static('public'));
+// this will take the form data(if submitted by the user) and with be connected to req object
+app.use(express.urlencoded({extended: true}))
+
+
 
 app.get('/', (req, res) => {
     res.render('home', {title: 'Home Page'});
 });
 
-app.get('/upload_blog', (req,res) =>{
-    const blog = new Blog({
-        userName : 'Raghav Aggarwal',
-        blogName: 'New blog',
-        body : 'New Body'
-    });
-    blog.save()
-    .then(result => res.send(result))
-    .catch(err => console.log("upload err" + err));
+app.post('/upload_blog', (req,res) =>{
+    // const blog = new Blog({
+    //     userName : 'Raghav Aggarwal',
+    //     blogName: 'New blog',
+    //     body : 'New Body'
+    // });
+    // blog.save()
+    // .then(result => res.send(result))
+    // .catch(err => console.log("upload err" + err));
     console.log(req.body);
-    //res.send(req);
+    res.send(req.body);
 });
 
 app.get('/get_blog', (req, res)=>{
@@ -44,4 +50,13 @@ app.get('/get_blog', (req, res)=>{
         res.render('get_blog', {title: 'Upload Blogs', blogs: result});
     })
     .catch(err=> console.log("get_blog err" + err));
-})
+});
+
+app.get('/blog/:id', (req, res)=>{
+    const id = req.params.id;
+    Blog.findById(id)
+    .then(result =>{
+        res.render('body', {blog: result, title: 'Blog Body'});
+    })
+    .catch(err => console.log("/blog/:id err" + err));
+});
