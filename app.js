@@ -5,6 +5,7 @@ const blogRoutes = require('./routes/blogRoutes');
 const app = express();
 const port = process.env.PORT || 3000;
 
+
 const dbURL = "mongodb+srv://clg-project:test1234@clg-project.xksl3.mongodb.net/blog?retryWrites=true&w=majority";
 
 // used to connect to database, and objects are written to remove depreciation warnings
@@ -13,6 +14,7 @@ mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology:true})
     console.log("connected to db");
     // localhost link is: localhost:3000/
     app.listen(port);
+
 })
 .catch((err)=> console.log("Error at connecting to DB" + err));
 
