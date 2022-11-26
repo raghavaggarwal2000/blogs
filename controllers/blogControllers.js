@@ -29,9 +29,18 @@ const blog_body = (req, res)=>{
     const id = req.params.id;
     Blog.findById(id)
     .then(result =>{
-        res.render('blog/body', {blog: result, title: 'Blog Body'});
+        res.render('blog/blog_details', {blog: result, title: 'Blog Body'});
     })
     .catch(err => console.log("/blog/:id err" + err));
+};
+
+const delete_blog = (req,res) =>{
+    const id = req.params.id;
+    Blog.findByIdAndDelete(id)
+    .then(result => {
+        res.json({ redirect: '/' });
+    })
+    .catch(err=> console.log("delete err " + err));
 };
 
 
@@ -39,5 +48,6 @@ module.exports = {
     blogIndex,
     blog_create_get,
     blog_create_post,
-    blog_body
+    blog_body,
+    delete_blog
 };

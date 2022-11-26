@@ -5,3 +5,8 @@ body{
 .form-control{
     width: 50% !important;
 }
+
+.delete_blog{
+    position: absolute;
+    cursor: pointer;
+}
