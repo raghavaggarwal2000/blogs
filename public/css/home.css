@@ -9,4 +9,12 @@ body{
 .delete_blog{
     position: absolute;
     cursor: pointer;
+    right: 30px;
+    top: 100px;
+
+}
+
+.delete_blog:hover{
+    box-shadow: 10px 20px 10px  black;
+    border-radius: 50%;
 }

@@ -11,9 +11,19 @@
         <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
+        <% if(user){ %>
         <li class="nav-item">
             <a class="nav-link" href="/upload_blog">New Blog</a>
         </li>
+        <% } %>
         </ul>
     </div>
+    <form class="form-inline my-2 my-lg-0">
+        <% if(user){ %>
+            <a class="btn btn-outline-success my-2 my-sm-0" type="submit" href = '/logout'>Logout</a>
+        <% }else{ %>
+            <a class="btn btn-outline-success my-2 my-sm-0" type="submit" href = '/login'>Login</a>
+            <a class="btn btn-outline-success my-2 my-sm-0" type="submit" href = '/signup'>Signup</a>
+        <% } %>
+    </form>
 </nav>

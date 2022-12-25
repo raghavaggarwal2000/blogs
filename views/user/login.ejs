@@ -1,0 +1,53 @@
+<html>
+    <%- include('../partials/head.ejs') %>
+    <body>
+        <%- include('../partials/header.ejs') %>
+        <H1>Login page</H1>
+        <form class="login_form">
+            <label for="email">Email</label>
+            <input type="email" name ="email"><br>
+            <div class="email error"></div>
+            <br><br>
+            <label for = "password">Password</label>
+            <input type="password" name="password">
+            <div class="password error"></div>
+            <br><br>
+            <button class="btn btn-primary">Login</button>
+        </form>
+
+        <%- include('../partials/footer.ejs') %>
+
+        <script>
+            const form = document.querySelector('.login_form');
+            const emailErrors = document.querySelector('.email.error');
+            const passwordErrors = document.querySelector('.password.error');
+
+            form.addEventListener('submit', async (e) =>{
+                // This will make sure that page will not refresh after submit is click
+                e.preventDefault();
+
+                const email = form.email.value;
+                const password = form.password.value;
+                
+                try{
+                    const res = await fetch('/login',{
+                        method: 'POST',
+                        body: JSON.stringify({email,password}),
+                        headers: {'Content-Type':'application/json'}
+                    });
+                    const data = await res.json();
+                    if(data.errors){
+                        emailErrors.textContent = data.errors.email;
+                        passwordErrors.textContent = data.errors.password;
+                    }
+                    if(data.user){
+                        location.assign('/');
+                    }
+                }
+                catch(err){
+                    console.log(err);
+                }
+            });
+        </script>
+    </body>
+</html>
