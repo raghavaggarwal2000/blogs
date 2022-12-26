@@ -3,17 +3,19 @@
     <body>
         <%- include('../partials/header.ejs') %>
         <H1>Login page</H1>
+        <div class="create-blog content">
         <form class="login_form">
             <label for="email">Email</label>
-            <input type="email" name ="email"><br>
+            <input type="email" name ="email">
             <div class="email error"></div>
-            <br><br>
+
             <label for = "password">Password</label>
             <input type="password" name="password">
             <div class="password error"></div>
-            <br><br>
-            <button class="btn btn-primary">Login</button>
+
+            <button>Login</button>
         </form>
+    </div>
 
         <%- include('../partials/footer.ejs') %>
 

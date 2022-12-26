@@ -4,18 +4,19 @@
         <%- include('../partials/header.ejs') %>
         <h1>Signup Page</h1>
 
-        <form class="signup_form">
-            <label for="email">Email</label>
-            <input type="email" name ="email" required><br>
-            <div class="email error"></div>
-            <br><br>
-            <label for = "password">Password</label>
-            <input type="password" name="password" required>
-            <div class="password error"></div>
-            <br><br>
-            <button class="btn btn-primary">Signup</button>
-        </form>
-        
+        <div class="create-blog content">
+            <form class="signup_form">
+                <label for="email">Email</label>
+                <input type="email" name ="email" required>
+                <div class="email error"></div>
+
+                <label for = "password">Password</label>
+                <input type="password" name="password" required>
+                <div class="password error"></div>
+
+                <button>Signup</button>
+            </form>
+        </div>
        
         <script>
             const form = document.querySelector('.signup_form');

@@ -3,32 +3,22 @@
     <%- include("../partials/head.ejs") %>
 <body>
     <%- include("../partials/header.ejs") %>
-    
-    <form action="/upload_blog" method="post">
-        <div class="form-group row">
-          <label for="username" class="col-sm-2 col-form-label col-form-label-lg">User Name</label>
-          <div class="col-sm-10">
-            <input type="text" name = "username" class="form-control" placeholder="User Name" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="blogname" class="col-sm-2 col-form-label col-form-label-lg">Blog Name</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" name="blogname" placeholder="Blog Name" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="body" class="col-sm-2 col-form-label col-form-label-lg">Blog Body</label>
-          <div class="col-sm-10">
-            <textarea type="" class="form-control" name="body" rows = 3 required></textarea>
-          </div>
-        </div>
-        <div class="form-group row">
-            <button class = "btn-primary">Submit</button> 
-        </div>
-        
-    </form>
 
+    <div class="create-blog content">
+      <form action="/upload_blog" method="post">
+          <label for="username">Username</label>
+          <input type="text" name ="username" placeholder="User Name" required>
+
+          <label for="blogname">Blog Name</label>
+          <input type="text" name="blogname" placeholder="Blog Name" required>
+
+          <label for="body">Blog Body</label>
+          <textarea name="body" required></textarea>
+
+          <button>Signup</button>
+      </form>
+      
+  </div>
     <%- include('../partials/footer.ejs') %>
 </body>
 </html>
