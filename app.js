@@ -4,6 +4,7 @@ const blogRoutes = require('./routes/blogRoutes');
 const userRoutes = require('./routes/userRoutes');
 const cookieParser = require('cookie-parser');
 const { checkUser } = require('./middleware/authMiddleware');
+const limiter = require('./rate_limit');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -22,6 +23,8 @@ mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology:true})
 .catch((err)=> console.log("Error at connecting to DB" + err));
 
 
+app.use(limiter);
+
 
 // this is used to register for view engine
 app.set('view engine', 'ejs'); 
@@ -32,7 +35,7 @@ app.use(express.urlencoded({extended: true}));
 // this will take any json data which will come along with req and it passes it to javascript object and attaches it to 
 // req object so that we can use it. Ex: using json we can use it
 app.use(express.json());
-    f
+    
 //middleware(create cookies)
 app.use(cookieParser());
 

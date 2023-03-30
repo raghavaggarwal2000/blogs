@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "pm2 start ecosystem.config.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,12 +14,12 @@
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "express-rate-limit": "^6.7.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.2",
     "validator": "^13.7.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20",
-    "pm2": "^5.2.2"
+    "nodemon": "^2.0.20"
   }
 }
