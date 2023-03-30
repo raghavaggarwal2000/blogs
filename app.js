@@ -32,7 +32,7 @@ app.use(express.urlencoded({extended: true}));
 // this will take any json data which will come along with req and it passes it to javascript object and attaches it to 
 // req object so that we can use it. Ex: using json we can use it
 app.use(express.json());
-    f
+  
 //middleware(create cookies)
 app.use(cookieParser());
 
