@@ -5,7 +5,6 @@ const userRoutes = require('./routes/userRoutes');
 const cookieParser = require('cookie-parser');
 const { checkUser } = require('./middleware/authMiddleware');
 const limit = require('./rate_limit');
-// const limiter = require('./rate_limit');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,9 +22,6 @@ mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology:true})
 })
 .catch((err)=> console.log("Error at connecting to DB" + err));
 
-
-
-// app.use(limiter);
 
 
 // this is used to register for view engine
