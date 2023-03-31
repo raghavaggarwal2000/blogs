@@ -4,7 +4,8 @@ const blogRoutes = require('./routes/blogRoutes');
 const userRoutes = require('./routes/userRoutes');
 const cookieParser = require('cookie-parser');
 const { checkUser } = require('./middleware/authMiddleware');
-const limiter = require('./rate_limit');
+const limit = require('./rate_limit');
+// const limiter = require('./rate_limit');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,7 +24,8 @@ mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology:true})
 .catch((err)=> console.log("Error at connecting to DB" + err));
 
 
-app.use(limiter);
+
+// app.use(limiter);
 
 
 // this is used to register for view engine
@@ -37,6 +39,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 //middleware(create cookies)
 app.use(cookieParser());
+
+app.use(limit);
 
 app.get('*', checkUser);
 app.use(userRoutes);
